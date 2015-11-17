@@ -1,0 +1,12 @@
+{#koDisplay:net.display.FavorisDisplay#}
+{#set:this.hasPageHeader=false#}
+{#set:this.ajaxIncludes=true#}
+{_form}
+{idCompte}
+{_fieldset}
+{titre}
+{idDossier}
+{siteWebUrl}
+{_deleteCk}
+{/_fieldset}
+{/_form}

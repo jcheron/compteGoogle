@@ -1,0 +1,18 @@
+{#koDisplay:net.display.HistoriqueDisplay#}
+{#func:this.setEditable(false)#}
+{#set:this.isShowCaption=true#}
+{#set:this.ajaxIncludes=true#}
+{#set:this.filtreCaption=Historique de navigation#}
+{#mask:<td>{dateHeureConsult}</td><td>{siteweb}</td>#}
+{#mask:<td>{dateHeureConsult}</td><td>{siteweb}</td>#}
+{#set:this.editFormUrl=addHistorique.do#}
+{_ajx}
+{_listContent}
+	{_filtre}
+		<a class="btn navBarreBtn" id="btAddUrl"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Ajouter un site web</a>
+		<a class="btn navBarreBtn" id="btAddLienHisto"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;Ajouter un lien dans l'historique</a>
+	{_page}
+	<div class="boxButtons">
+		{_navBarre}{_pageCounter}
+	</div>
+{/_listContent}

@@ -1,0 +1,9 @@
+{#koDisplay:net.display.HistoriqueDisplay#}
+{_form}
+{_fieldset}
+{idCompte}
+{dateHeureConsult}
+{siteWebUrl}
+{_deleteCk}
+{/_fieldset}
+{/_form}

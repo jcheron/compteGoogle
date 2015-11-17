@@ -1,0 +1,21 @@
+{#koDisplay:net.display.FavorisDisplay#}
+{#func:this.setEditable(true)#}
+{#set:this.isShowCaption=true#}
+{#set:this.ajaxIncludes=true#}
+{#set:this.filtreCaption=Favoris#}
+{#mask:<td>{titre}</td><td>{dossier}</td><td>{siteweb}</td>#}
+{#mask:<td>{titre}</td><td>{dossier}</td><td>{siteweb}</td>#}
+{#set:this.ajaxDivMessageSubmit=_ajaxFavoris#}
+{#set:this.ajaxDivContentRefresh=_ajaxContentFavoris#}
+{#set:this.idLb=Favoris#}
+{#set:this.editFormUrl=addFavoris.do#}
+{_ajx}
+{_listContent}
+	{_filtre}
+	<a class="btn navBarreBtn" id="btAddDossier"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;Ajouter un dossier</a>
+	<a class="btn navBarreBtn" id="btAddFavoris"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;Ajouter un favoris</a>
+	{_page}
+	<div class="boxButtons">
+		{_navBarre}{_pageCounter}
+	</div>
+{/_listContent}

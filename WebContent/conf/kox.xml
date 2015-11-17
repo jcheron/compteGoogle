@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<controllers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://api.kobject.net/xml/controller-1.0.0.25b.xsd">
+<class name="KCompte" caption="Compte">
+        <member max="100" name="identite" required="1" type="string" caption="Identité (prénom et nom)"/>
+        <member max="255" name="mail" required="1" type="mail" caption="Adresse email"/>
+    </class>
+    <class name="KDossier" caption="Dossier">
+        <member max="11" name="idCompte" required="1" type="int" caption="Compte" control="readonlylist"/>
+        <member max="255" name="nom" required="1" type="string" caption="Nom"/>
+        <member max="11" name="idParent" required="0" type="int" caption="Parent"/>
+    </class>
+    <class name="KFavoris" caption="Favoris">
+        <member max="11" name="idCompte" required="1" type="int" caption="Compte" control="readonlylist"/>
+        <member max="11" name="idDossier" required="0" type="int" caption="Dossier"/>
+        <member max="255" name="siteWebUrl" required="1" type="string" caption="Site web url" control="radiolist"/>
+        <member max="100" name="titre" required="1" type="string" caption="Titre"/>
+    </class>
+    <class name="KSiteweb" caption="Site web">
+        <member max="255" name="titre" required="0" type="string"/>
+        <member max="255" name="url" required="1" type="string"/>
+    </class>
+    <class name="KSiteweb_has_compte" caption="Historique">
+        <member max="11" name="idCompte" required="1" type="int" caption="Compte" control="readonlylist"/>
+        <member name="dateHeureConsult" required="1" type="timestamp" caption="Date de consultation"/>
+        <member max="255" name="siteWebUrl" required="1" type="string" caption="Site web url"  control="radiolist"/>
+    </class>
+</controllers>

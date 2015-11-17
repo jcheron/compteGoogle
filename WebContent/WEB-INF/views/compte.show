@@ -1,0 +1,5 @@
+{#koDisplay:net.display.AuthDisplay#}
+{#set:this.ajaxIncludes=true#}
+{_fieldset}
+{identite} ({mail}) <a class="btn" id="btDisconnect">Déconnexion</a>
+{/_fieldset}

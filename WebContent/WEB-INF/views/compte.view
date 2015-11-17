@@ -1,0 +1,14 @@
+{#set:this.ajaxIncludes=true#}
+<div class="panel">
+	<div class="panel-body" id="content">
+		{_form}
+		{_fieldset}
+		{identite}{mail}
+		{/_fieldset}
+		<div class="boxButtons">
+			<a class="btn" id="btValider"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Valider</a>
+		</div>
+		{/_form}
+		<div class="alert alert-info">Merci de vous connecter</div>
+	</div>
+</div>

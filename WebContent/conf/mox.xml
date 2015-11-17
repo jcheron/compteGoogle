@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mainController xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://api.kobject.net/xml/mapping-1.0.0.25d.xsd">
+	<mappings>
+        <mapping method="GET" requestURL="addHistorique.do" responseURL="/WEB-INF/views/siteweb_has_compte.view"/>
+        <mapping method="GET" requestURL="addUrl.do" responseURL="/WEB-INF/views/siteweb.view"/>
+        <virtualMapping mainControl="false" mappingFor="submitForm" method="POST" requestURL="submitUrl.do"/>
+        <virtualMapping mainControl="false" mappingFor="submitForm" method="POST" requestURL="submitDossier.do"/>
+        <mapping method="GET" requestURL="addDossier.do" responseURL="/WEB-INF/views/dossier.view"/>
+        <mapping method="GET" requestURL="addFavoris.do" responseURL="/WEB-INF/views/favoris.view"/>
+        <mapping requestURL="historique.do" responseURL="/WEB-INF/views/siteweb_has_compte.list"/>
+        <mapping method="GET" requestURL="main.do" responseURL="/WEB-INF/views/main.jsp"/>
+        <mapping classControl="net.controllers.AuthController" method="GET" requestURL="/auth.do" responseURL="/WEB-INF/views/compte.show"/>
+        <mapping classControl="net.controllers.AuthController" method="GET" requestURL="/disconnect.do" responseURL="/WEB-INF/views/compte.show"/>
+        <mapping classControl="net.controllers.ConnectionController" requestURL="favoris.do" responseURL="/WEB-INF/views/favoris.list"/>
+        <mapping method="GET" requestURL="connection.do" responseURL="/WEB-INF/views/compte.view"/>
+    </mappings>
+	<filters/>
+	<ajax-includes>
+        <request requestURL="connection.do">
+            <js triggerEvent="click" triggerSelector="#btValider" unique="false">
+                <include condition="vfrmKCompte.validate()" formName="frmKCompte" method="POST" targetId="favoris" targetURL="favoris.do">
+                    <include targetId="auth" targetURL="auth.do"/>
+                </include>
+            </js>
+        </request>
+        <request requestURL="main.do">
+            <js triggerEvent="load" triggerSelector="body" unique="false">
+                <include targetId="auth" targetURL="auth.do"/>
+            </js>
+        </request>
+        <request requestURL="auth.do">
+            <js triggerEvent="load" triggerSelector="body" unique="false">
+                <include targetId="favoris" targetURL="favoris.do">
+                    <include targetId="historique" targetURL="historique.do"/>
+                </include>
+            </js>
+            <js triggerEvent="click" triggerSelector="#btDisconnect" unique="false">
+                <include targetId="auth" targetURL="disconnect.do">
+                    <message targetId="favoris">''</message>
+                    <message targetId="historique">''</message>
+                </include>
+            </js>
+        </request>
+        <request requestURL="favoris.do">
+            <js triggerEvent="click" triggerSelector="#btAddFavoris" unique="false">
+                <function script="lbfrmAddFavoris.show(&quot;0&quot;,&quot;net.models.KFavoris&quot;);"/>
+            </js>
+            <js triggerEvent="click" triggerSelector="#btAddDossier" unique="false">
+                <includeDialog>
+                    <dialog modal="true" title="Ajouter un dossier">
+                        <button caption="Ajouter" id="btFrmAddDossier" glyphIcon="ok">
+                            <submitForm condition="vfrmKDossier.validate()==true" formName="frmKDossier" kobjectShortClassName="KDossier" method="POST" validation="true" virtualURL="submitDossier.do"/>
+                            <function script="return vfrmKDossier.validate();"/>
+                        </button>
+                        <button caption="Annuler" id="btFrmCancelDossier" glyphIcon="remove">
+                            <function script="return true;"/>
+                        </button>
+                    </dialog>
+                    <include targetId="lb-Ajouter_un_dossier-box" targetURL="addDossier.do"/>
+                </includeDialog>
+            </js>
+        </request>
+        <request requestURL="historique.do">
+            <js triggerEvent="click" triggerSelector="#btAddLienHisto" unique="false">
+                <function script="lbfrmAdd.show(&quot;0&quot;,&quot;net.models.KSiteweb_has_compte&quot;);"/>
+            </js>
+            <js triggerEvent="click" triggerSelector="#btAddUrl" unique="false">
+                <includeDialog>
+                    <dialog modal="true" title="Ajout de site web">
+                        <button caption="Ajouter" id="btFrmAddUrl" glyphIcon="ok">
+                            <submitForm condition="vfrmKSiteweb.validate()==true" formName="frmKSiteweb" kobjectShortClassName="KSiteweb" method="POST" validation="true" virtualURL="submitUrl.do"/>
+							<function script="return vfrmKSiteweb.validate();"/>
+                        </button>
+                        <button caption="Annuler" id="btCancelUrl" glyphIcon="remove">
+                            <function script="return true;"/>
+                        </button>
+                    </dialog>
+                    <include targetId="lb-Ajout_de_site_web-box" targetURL="addUrl.do"/>
+                </includeDialog>
+            </js>
+        </request>
+    </ajax-includes>
+</mainController>

@@ -1,0 +1,9 @@
+{#koDisplay:net.display.DossierDisplay#}
+{#set:this.ajaxIncludes=true#}
+{_form}
+{_fieldset}
+{idCompte}{nom}{idParent}
+{/_fieldset}
+{_deleteCk}
+
+{/_form}
